@@ -1,8 +1,8 @@
-package url_shortcut.url_shortcut.services;
+package ru.job4j.url.services;
 
 import org.springframework.stereotype.Service;
-import url_shortcut.url_shortcut.domain.Site;
-import url_shortcut.url_shortcut.repositories.SiteRepository;
+import ru.job4j.url.domain.Site;
+import ru.job4j.url.repositories.SiteRepository;
 
 import java.util.Optional;
 import java.util.Random;
@@ -19,11 +19,11 @@ public class SiteService {
         return this.siteRepository.findByName(name);
     }
 
-    public Site create(Site site) {
-        Site newSite = new Site(site.getName());
+    public Site create(String name) {
+        Site newSite = new Site(name);
         newSite.setLogin(randomGenerator());
         newSite.setPassword(randomGenerator());
-        return this.siteRepository.save(site);
+        return this.siteRepository.save(newSite);
     }
 
     public String randomGenerator() {
