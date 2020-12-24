@@ -29,8 +29,7 @@ public class RedirectController {
         String url = encodedUrl.get().getUrl();
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", url);
-        encodedUrl.get().setFollowings(encodedUrl.get().getFollowings() + 1); //increase followings
-        urlService.update(encodedUrl.get());
+        urlService.update(encodedUrl.get().getId());
         return new ResponseEntity(
                 headers,
                 encodedUrl.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.FOUND

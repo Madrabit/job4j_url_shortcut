@@ -3,6 +3,7 @@ package ru.job4j.url.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.url.domain.EncodedUrl;
 import ru.job4j.url.repositories.EncodedUrlRepository;
 
@@ -48,7 +49,8 @@ public class EncodedUrlService {
         return generatedString;
     }
 
-    public void update(EncodedUrl encodedUrl)  {
-        this.urlRepository.save(encodedUrl);
+    @Transactional
+    public void update(int id)  {
+        this.urlRepository.update(id);
     }
 }
